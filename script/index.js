@@ -165,7 +165,7 @@ function get3DObject(text) {
 function getFontMesh({ font, text }) {
     var fontCfg = {
         font: font,
-        size: 30,
+        size: fontSize,
         height: 5,
         curveSegments: 2,
         bevelEnabled: false
@@ -272,6 +272,8 @@ function update() {
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     renderer.setSize(window.innerWidth, window.innerHeight);
+    config.maxX = window.innerWidth / 2;
+    config.maxY = window.innerHeight / 2;
 }
 
 function translate() {
@@ -294,9 +296,9 @@ function translate() {
                 const { x: rX, y: rY, z: rZ } = object.rotation;
                 object.position.set(x + xSpeed, y + ySpeed, z + zSpeed);
                 object.rotation.set(
-                    (rX + rotateSpeed) % 360,
-                    (rY + rotateSpeed) % 360,
-                    (rZ + rotateSpeed) % 360
+                    (rX + rotateSpeed) % 720,
+                    (rY + rotateSpeed) % 720,
+                    (rZ + rotateSpeed) % 720
                 );
                 object.rotation.z = rZ + rotateSpeed;
             });
