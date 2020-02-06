@@ -83,12 +83,12 @@ function initScene() {
 }
 
 function initLight() {
-    light = new THREE.SpotLight(0xeedfcc);
+    light = new THREE.SpotLight(0x858585);
     light.position.set(0, 0, 0);
     light.castShadow = true;
 
     scene.add(light);
-    scene.add(new THREE.AmbientLight(0xd1d1d1));
+    scene.add(new THREE.AmbientLight(0x858585));
 }
 
 function initContent() {
@@ -160,6 +160,7 @@ function get3DObject(text) {
     ele.className = "element";
     ele.innerHTML = text;
     ele.style.fontSize = `${fontSize}px`;
+    ele.style.color = "#000000";
     return new THREE.CSS3DObject(ele);
 }
 function getFontMesh({ font, text }) {
@@ -174,7 +175,7 @@ function getFontMesh({ font, text }) {
     fontGeometry.computeBoundingBox();
 
     var fontMaterial = new THREE.MeshBasicMaterial({
-        color: 0xababab
+        color: 0x000000
     });
     const obj = new THREE.Mesh(fontGeometry, fontMaterial);
     objects.push(obj);
